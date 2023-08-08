@@ -87,14 +87,14 @@ const Comp = CustomPicker((props) => {
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
-        // anchorOrigin={{
-        //   vertical: 'bottom',
-        //   horizontal: 'center',
-        // }}
-        // transformOrigin={{
-        //   vertical: 'top',
-        //   horizontal: 'center',
-        // }}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
 
       >
         <div style={styles.container}>
@@ -111,12 +111,20 @@ const Comp = CustomPicker((props) => {
             <Alpha {...props} pointer={SliderPointer} />
           </div>
 
-          <div style={{ display: 'flex', margin: '18px' }}>
+          <div style={{ display: 'flex', margin: '18px', alignItems: 'center', justifyContent: 'space-around' }}>
             {/* box showing the current color */}
             <CurrentColorBox {...props} />
             {/* hex input and opacity info */}
             <Typography>Hex</Typography>
-            <input value={inputValue ?? tinycolor(props.rgb).toHex8String()} onChange={handleInputChange} onBlur={() => setInputValue(null)}></input>
+            <input
+              value={inputValue ?? tinycolor(props.rgb).toHex8String()}
+              onChange={handleInputChange}
+              onBlur={() => setInputValue(null)}
+              onFocus={(event) => event.target.select()}
+              style={{ padding: "0px 16px", width: '80px', height: '24px', fontFamily: 'monospace', border: 'none', outline: '1px solid lightgrey', fontSize: '14px' }}
+            >
+            </input>
+            <Typography variant='subtitle2'>{Math.round(tinycolor(props.rgb).getAlpha()*100)}%</Typography>
           </div>
         </div>
       </Popover>
