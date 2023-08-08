@@ -17,22 +17,7 @@ const presets = [
   "grey",
   "cyan",
   "magenta",
-  "lime",
-  "maroon",
-  "navy",
-  "orange",
-  "purple",
-  "pink",
-  "brown",
-  "black",
-  "white",
-  "gray",
-  "grey",
-  "cyan",
-  "magenta",
-  "lime",
-  "maroon",
-  "navy",
+
 ]
 
 function App() {

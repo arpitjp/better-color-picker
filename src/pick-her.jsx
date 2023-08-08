@@ -124,7 +124,8 @@ const Comp = CustomPicker((props) => {
             gridTemplateColumns: `repeat(auto-fill, ${COLOR_BOX_SIZE})`,
             gap: `${COLOR_BOX_SIZE} ${COLOR_BOX_SIZE}`,
             overflowY: 'scroll',
-            margin: '18px'
+            padding: '4px',
+            margin: '14px'
           }}>
             {props.presets.map((preset, index) => <ColorBox color={preset} title={preset} key={index} onChange={props._onChange}/>)}
           </div>}
