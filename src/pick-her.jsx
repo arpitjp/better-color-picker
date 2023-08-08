@@ -10,8 +10,6 @@ const styles = {
   container: {
     width: '330px',
     maxHeight: '600px',
-    outline: '1px solid black',
-    padding: "2px",
   },
   slideLines: {
     position: 'relative',
@@ -42,6 +40,25 @@ const SliderPointer = () => (
     boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
   }} />
 )
+
+const COLOR_BOX_SIZE = '18px';
+const ColorBox = ({color, title, onChange}) => {
+  const colorObj = tinycolor(color);
+  const backgroundColor = colorObj.toHex8String();
+  const borderColor = colorObj.darken(10).toHexString();
+  return <div
+    title={title || color}
+    cursor='pointer'
+    onClick={() => onChange({ rgb: colorObj.toRgb() })}
+    style={{
+      cursor: 'pointer',
+      width: COLOR_BOX_SIZE,
+      height: COLOR_BOX_SIZE,
+      outline: `1px solid ${borderColor}`,
+      backgroundColor,
+    }}
+  />
+}
 
 const CurrentColorBox = (props) => {
   const size = props.size || "20px";
@@ -98,15 +115,28 @@ const Comp = CustomPicker((props) => {
 
       >
         <div style={styles.container}>
-
+          {/* label */}
+          {props?.label && <Typography variant="body1" style={{ margin: '18px' }}>{props.label}</Typography>}
+          {/* presets */}
+          {props?.presets?.length && <div style={{
+            maxHeight: '75px',
+            display: 'grid',
+            gridTemplateColumns: `repeat(auto-fill, ${COLOR_BOX_SIZE})`,
+            gap: `${COLOR_BOX_SIZE} ${COLOR_BOX_SIZE}`,
+            overflowY: 'scroll',
+            margin: '18px'
+          }}>
+            {props.presets.map((preset, index) => <ColorBox color={preset} title={preset} key={index} onChange={props._onChange}/>)}
+          </div>}
+          {/* input: saturation */}
           <div style={{ position: 'relative', width: "100%", overflow: 'hidden', aspectRatio: '16 / 9' }}>
             <Saturation {...props} pointer={Pointer} />
           </div>
-
+          {/* input: hue */}
           <div style={styles.slideLines}>
             <Hue {...props} pointer={SliderPointer} />
           </div>
-
+          {/* input: alpha */}
           <div style={styles.slideLines}>
             <Alpha {...props} pointer={SliderPointer} />
           </div>
@@ -114,7 +144,7 @@ const Comp = CustomPicker((props) => {
           <div style={{ display: 'flex', margin: '18px', alignItems: 'center', justifyContent: 'space-around' }}>
             {/* box showing the current color */}
             <CurrentColorBox {...props} />
-            {/* hex input and opacity info */}
+            {/* input: hex */}
             <Typography>Hex</Typography>
             <input
               value={inputValue ?? tinycolor(props.rgb).toHex8String()}
