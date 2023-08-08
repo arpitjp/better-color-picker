@@ -6,8 +6,8 @@ function App() {
   const [color, setColor] = useState('#00000033');
   return (
     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: "100vh", flexDirection: 'column'}}>
-      <CustomColorPicker color={color} setColor={setColor}  />
       <p>{color}</p>
+      <CustomColorPicker color={color} setColor={setColor} />
     </div>
   )
 }
