@@ -103,6 +103,7 @@ const CurrentColorBox = (props) => {
     color: {
       position: 'absolute',
       inset: '0px',
+      boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.1)',
       background: tinycolor(props.rgb).toHex8String(),
       zIndex: '2',
     }
