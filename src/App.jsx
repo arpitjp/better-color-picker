@@ -21,10 +21,10 @@ const presets = [
 ]
 
 function App() {
-  const [color, setColor] = useState('#00000033');
+  const [color, setColor] = useState('lavender');
   return (
     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
-      <Typography style={{margin: '24px'}}>Click on the magistic square</Typography>
+      <Typography style={{margin: '30px', fontSize: '20px', color: 'rgb(0, 0, 0, 0.8)'}}>Click on the magistic square</Typography>
       <CustomColorPicker
         color={color}
         label={"Pick a color"}
