@@ -15,7 +15,6 @@ const presets = [
   "black",
   "white",
   "gray",
-  "grey",
   "cyan",
   "magenta",
 

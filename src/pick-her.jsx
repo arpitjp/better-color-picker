@@ -73,19 +73,17 @@ const SliderPointer = () => <div style={inlineStyles.slidePointer} />
 
 const COLOR_BOX_SIZE = '18px';
 const ColorBox = ({ color, title, onChange }) => {
-  const colorObj = tinycolor(color);
-  const backgroundColor = colorObj.toHex8String();
-  const borderColor = colorObj.darken(8).toHexString();
+  const borderColor = tinycolor(color).darken(8).toHexString();
   return <Tooltip title={title || color}>
     <div
     cursor='pointer'
-    onClick={() => onChange({ rgb: colorObj.toRgb() })}
+    onClick={() => onChange({ rgb: tinycolor(color).toRgb() })}
     style={{
       cursor: 'pointer',
       width: COLOR_BOX_SIZE,
       height: COLOR_BOX_SIZE,
       outline: `1px solid ${borderColor}`,
-      backgroundColor,
+      backgroundColor: tinycolor(color),
     }}
   />
   </Tooltip>
