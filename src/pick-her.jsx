@@ -157,7 +157,7 @@ const Comp = CustomPicker((props) => {
       >
         <div style={inlineStyles.container}>
           {/* label */}
-          {props?.label && <Typography variant="body1" style={{ margin: '18px 20px 0px 20px' }}>{props.label}</Typography>}
+          {props?.label && <Typography variant="body1" style={{ margin: '18px 20px' }}>{props.label}</Typography>}
           {/* presets */}
           {props?.presets?.length && <div style={{
             ...inlineStyles.presets,
