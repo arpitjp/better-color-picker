@@ -17,7 +17,7 @@ const inlineStyles = {
   },
   slideLines: {
     position: 'relative',
-    margin: '18px',
+    margin: '20px',
     height: '13px'
   },
   saturationPointer: {
@@ -157,7 +157,7 @@ const Comp = CustomPicker((props) => {
       >
         <div style={inlineStyles.container}>
           {/* label */}
-          {props?.label && <Typography variant="body1" style={{ margin: '20px' }}>{props.label}</Typography>}
+          {props?.label && <Typography variant="body1" style={{ margin: '16px 20px' }}>{props.label}</Typography>}
           {/* presets */}
           {props?.presets?.length && <div style={{
             ...inlineStyles.presets,
