@@ -93,12 +93,22 @@ const ColorBox = ({ color, title, onChange }) => {
 
 const CurrentColorBox = (props) => {
   const size = props.size || "20px";
-  return <div style={{
-    position: 'relative',
-    width: size,
-    height: size,
-    backgroundColor: tinycolor(props.rgb)
-  }}>
+  const s = {
+    container: {
+      width: size,
+      height: size,
+      position: 'relative',
+      overflow: 'hidden',
+    },
+    color: {
+      position: 'absolute',
+      inset: '0px',
+      background: tinycolor(props.rgb).toHex8String(),
+      zIndex: '2',
+    }
+  }
+  return <div style={s.container}>
+    <div style={s.color}></div>
     <Checkboard {...props} />
   </div>
 }
