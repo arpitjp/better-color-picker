@@ -75,7 +75,7 @@ const COLOR_BOX_SIZE = '18px';
 const ColorBox = ({ color, title, onChange }) => {
   const colorObj = tinycolor(color);
   const backgroundColor = colorObj.toHex8String();
-  const borderColor = colorObj.darken(10).toHexString();
+  const borderColor = colorObj.darken(8).toHexString();
   return <Tooltip title={title || color}>
     <div
     cursor='pointer'
@@ -92,7 +92,7 @@ const ColorBox = ({ color, title, onChange }) => {
 }
 
 const CurrentColorBox = (props) => {
-  const size = props.size || "20px";
+  const size = props.size || "22px";
   const s = {
     container: {
       width: size,
@@ -194,7 +194,11 @@ const Comp = CustomPicker((props) => {
               style={inlineStyles.inputBox}
             >
             </input>
-            <Typography variant='subtitle2'>{Math.round(tinycolor(props.rgb).getAlpha() * 100)}%</Typography>
+            <Typography variant='subtitle1' style={{
+              width: '42px',
+              fontSize: '14px',
+              textAlign: 'center',
+            }}>{Math.round(tinycolor(props.rgb).getAlpha() * 100)}%</Typography>
           </div>
         </div>
       </Popover>
