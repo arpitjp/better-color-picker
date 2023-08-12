@@ -10,10 +10,10 @@ const inlineStyles = {
   container: {
     width: '330px',
     maxHeight: '600px',
-    "-webkit-user-select": "none", /* Safari */        
-    "-moz-user-select": "none", /* Firefox */
-    "-ms-user-select": "none", /* IE10+/Edge */
-    "user-select": "none", /* Standard */
+    WebkitUserSelect: "none", /* Safari */        
+    MozUserSelect: "none", /* Firefox */
+    msUserSelect: "none", /* IE10+/Edge */
+    userSelect: "none", /* Standard */
   },
   slideLines: {
     position: 'relative',
@@ -206,9 +206,13 @@ const Comp = CustomPicker((props) => {
 
 export const CustomColorPicker = ({ color = "", setColor = () => { }, ...otherProps }) => {
   const rgbColor = tinycolor(color).toRgb();
+  if (!color) {
+    rgbColor.a = 0;
+  }
   const onChange = color => {
     const hexColor = tinycolor(color.rgb).toHex8String();
     setColor(hexColor)
   };
+  console.log(rgbColor)
   return <Comp color={rgbColor} onChange={onChange} _onChange={onChange} {...otherProps} />
 }
